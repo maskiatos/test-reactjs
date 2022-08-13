@@ -20,7 +20,8 @@ class MyComponent extends React.Component { //khai báo class MyComponent kế t
     handleOnMouseOver(x){   //x ở đây cũng giống event ở trên, là biến chứa thông tin sự kiện
         console.log(x.pageX)    //lấy ra hoàng độ điểm hover vào
     }
-    render(){ //JSX chỉ cho render 1 code block thôi, ví dụ ở đây nếu có 1 <div> khác song song thì báo lỗi, nested <div> thì được
+    render(){ //component bắt buộc ít nhất phải có render()
+        //JSX chỉ cho render 1 code block thôi, ví dụ ở đây nếu có 1 <div> khác song song thì báo lỗi, nested <div> thì được
         return(     
         //nên viết theo cách button Click me ở dưới để không phải đổi handleClick(event) thành arrowfunction để chạy cái this.state.name
             <div>
