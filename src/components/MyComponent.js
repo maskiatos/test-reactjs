@@ -5,19 +5,24 @@ import UserInfor from "./UserInfo" //import componet UserInfor export ra từ Us
 
 class MyComponent extends React.Component { //khai báo class MyComponent kế thừa Component từ thư viện React vừa import
     //JSX (JavaScript XML), chỉ riêng reactJS có cái này, là extension cho phép gõ html trực tiếp trong Reactjs
-    
+    state = {
+        ListUsers:[
+            {id: 1, name: "Thinh", age: 29},
+            {id: 2, name: "Chris", age: 35},
+            {id: 3, name: "Noname", age: 999},
+        ]
+    }
+
     render(){ //component bắt buộc ít nhất phải có render()
         //JSX chỉ cho render() return 1 code block thôi, ví dụ ở đây nếu return thêm 1 <div> nữa thì báo lỗi, nested <div> thì được
-        const arr = [1,2,"abc","def"]
         return(     
         //nên viết theo cách button Click me ở dưới để không phải đổi handleClick(event) thành arrowfunction để chạy cái this.state.name
             <div>
                 <UserInfor/>    
                 {/*gọi UserInfor import từ bên UserInfo.js, website vẫn chạy bình thường như khi viết hết code trong đấy ở file này*/}
                 <br/><br/>
-                <DisplayInfor name={"Thinh"} age={"29"}/> {/*truyền name và age từ file cha MyComponent.js vào file con DisplayInfo.js*/}
-                <hr/>   {/*nên truyền trong {} vì có thể truyền true, false, ... luôn, không có {} true false nó không hiểu*/}
-                <DisplayInfor arr={arr}/> {/*có thể truyền nhiều tham số vào cùng 1 component, bên con sẽ .props để nhận*/}
+                <DisplayInfor list={this.state.ListUsers}/> {/*truyền từ file cha này vào file con DisplayInfo.js, bên con .props để gọi*/}
+                {/*nên truyền trong {} vì có thể truyền true, false, ... luôn, không có {} true false nó không hiểu*/}
             </div>    
         )
     }
