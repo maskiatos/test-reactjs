@@ -1,10 +1,10 @@
 //ĐÂY LÀ COMPONENT CON CỦA MyComponent.js VÀ ĐƯỢC GỌI RA BÊN ĐÓ BẰNG CÁCH EXPORT RA ĐỂ CHIA CODE RA XỬ LÝ form
 import React from "react"
 
-class UserInfor extends React.Component{
+class AddUserInfor extends React.Component{
     state = {   
-        name: "Thinh",
-        age: 29,
+        name: "",
+        age: "",
         address: "Ha Noi"
     }
     handleClick(a){ //dưới là onClick={(x) => {this.handleClick(x)}} thì nó mới hiểu cái this là gì và chạy, không là báo lỗi 
@@ -34,7 +34,11 @@ class UserInfor extends React.Component{
     }
     handleSubmit(event){
         event.preventDefault()  //ngăn chặn hiệu ứng mặc định, SUBMIT thì nó sẽ mặc định sau khi bấm sẽ reload lại, giờ thì không
-        console.log(this.state)
+        this.props.addNewUser({ //gọi hàm props truyền từ cha sang và truyền value của name và age từ form ngược sang cha để chạy
+            id: Math.floor((Math.random()*100)+1) + "random", //thêm random để nhỡ nó ra số trùng id đã có sẵn thì cũng không sao
+            name: this.state.name, //value từ <input>
+            age: this.state.age, //value từ <input>
+        })
     }
     render(){
         return(
@@ -43,6 +47,7 @@ class UserInfor extends React.Component{
                 <button onClick={(x) => this.handleClick(x)}>Click me (Arrow func)</button>   {/*nên dùng, trên chỉ cần handleClick(a){}*/}
                 <button onClick={this.handleClick1}>Click me (normal)</button>
                 <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
+
                 <form onSubmit={(x) => this.handleSubmit(x)}>
                     <label>Name</label>
                     <input type="text" onChange={(x) => this.handleOnChangeName(x)} value={this.state.name}/> 
@@ -55,4 +60,4 @@ class UserInfor extends React.Component{
         )
     }
 }
-export default UserInfor
+export default AddUserInfor
