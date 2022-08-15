@@ -8,9 +8,11 @@ import store from './redux/store';
 const root = ReactDOM.createRoot(document.getElementById('root')); //tạo Root cho phần tử có id "root" ở index.html
 root.render(  //sau đó nhúng tất cả code vào cái phần tử có id "root" đấy bên index.html rồi hiển thị ra
   <Provider store={store}>
-    <React.StrictMode>
+    {/* <React.StrictMode>  */}
+      {/*enable StrictMode, cái này để highlight potential problem, không hiện ra UI, chỉ hiện trong console.log*/}
+      {/*nó chỉ tác dụng ở local, không tác dụng trên production build, giờ tạm comment nó để dễ nhìn console.log*/}
       <App />
-    </React.StrictMode>
+    {/* </React.StrictMode>  */}
   </Provider>
 );
 

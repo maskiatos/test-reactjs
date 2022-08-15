@@ -19,7 +19,7 @@ class UserInfor extends React.Component{
     thì nó mới hiểu cái this ở đây, không sẽ báo lỗi*/
         console.log("My name is ",this.state.name)  
     }
-    handleOnMouseOver(x){   //x ở đây cũng giống event ở trên, là biến chứa thông tin sự kiện
+    handleOnMouseOver(x){   //x ở đây cũng giống event ở trên, là biến chứa OBJECT element html gọi nó gồm các props, ở đây là <button>
         console.log(x.pageX)    //lấy ra hoành độ điểm hover vào
     }
     handleOnChangeName(event){
