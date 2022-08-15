@@ -1,5 +1,8 @@
 
 import React from "react"
+import "./DisplayInfor.scss" 
+//import file này ở đây là để áp dụng riêng các code bên trong cho file này thôi, không phải khai báo thừa css global bên App.css như cũ 
+import logoImage from "../logo.svg"
 
 class DisplayInfor extends React.Component{
     state={
@@ -14,7 +17,8 @@ class DisplayInfor extends React.Component{
         //destructuring để tối ưu code
         const {list} = this.props;  //list là biến được truyền từ bên thằng cha MyComponent.js
         return(
-            <div> 
+            <div className="displayInforContainer"> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
+                <img src={logoImage}/>
                 <div>
                     <h3 onClick={(x) => this.handleShowHide(x)}>
                         {this.state.showList === true ? "Hide all" : "Show all"}
