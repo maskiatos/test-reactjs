@@ -43,7 +43,7 @@ class AddUserInfor extends React.Component{
     render(){
         return(
             <> {/*FRAGMENT, để có thể return nhiều hơn 1 ELEMENT HTML mà không cần render thêm 1 element <div> tổng nữa*/}
-                my first component, {this.state.name}, {this.state.age} years old 
+                my first component, {this.state.name}, {this.state.age} years old <br/>
                 <button onClick={(x) => this.handleClick(x)}>Click me (Arrow func)</button>   {/*nên dùng, trên chỉ cần handleClick(a){}*/}
                 <button onClick={this.handleClick1}>Click me (normal)</button>
                 <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
