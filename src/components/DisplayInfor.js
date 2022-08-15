@@ -17,8 +17,8 @@ class DisplayInfor extends React.Component{
         //destructuring để tối ưu code
         const {list} = this.props;  //list là biến được truyền từ bên thằng cha MyComponent.js
         return(
-            <div className="displayInforContainer"> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
-                <img src={logoImage}/>
+            <div className="DisplayInforContainer"> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
+                <img src={logoImage}/> {/*logoImage là link đến ảnh được import ở trên, có thể là link đến file local hoặc link trên mạng */}
                 <div>
                     <h3 onClick={(x) => this.handleShowHide(x)}>
                         {this.state.showList === true ? "Hide all" : "Show all"}

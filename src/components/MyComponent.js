@@ -25,17 +25,21 @@ class MyComponent extends React.Component { //khai báo class MyComponent kế t
         })
         console.log(a)
     })
-    render(){ //component bắt buộc ít nhất phải có render()
+    render(){ //component bắt buộc ít nhất phải có render(), code trong return() gọi là TEMPLATE, component = template + logic
         //JSX chỉ cho render() return 1 ELEMENT HTML thôi, ví dụ ở đây nếu return thêm 1 <div> nữa thì báo lỗi, nested <div> thì được
         return(     
         //nên viết theo cách button Click me ở dưới để không phải đổi handleClick(event) thành arrowfunction để chạy cái this.state.name
-            <div>
-                <AddUserInfor addNewUser={this.handleAddNewUser}/> {/*truyền handleAddNewUser không được có (), có () là gọi hàm*/}
-                {/*gọi UserInfor import từ bên UserInfo.js, website vẫn chạy bình thường như khi viết hết code trong đấy ở file này*/}
-                <br/><br/>
-                <DisplayInfor list={this.state.ListUsers}/> {/*truyền từ file cha này vào file con DisplayInfo.js, bên con .props để gọi*/}
-                {/*nên truyền trong {} vì có thể truyền true, false, ... luôn, không có {} true false nó không hiểu*/}
-            </div>    
+            <> {/*FRAGMENT, để có thể return nhiều hơn 1 ELEMENT HTML mà không cần render thêm 1 element <div> tổng nữa*/}
+                <div className="a">
+                    <AddUserInfor addNewUser={this.handleAddNewUser}/> {/*gọi UserInfor import từ bên UserInfo.js*/}
+                    {/*truyền handleAddNewUser không được có (), có () là gọi hàm*/}
+                    <br/><br/>
+                </div>
+                <div className="b">
+                    <DisplayInfor list={this.state.ListUsers}/> {/*truyền từ file cha này vào file con, bên con .props để gọi*/}
+                    {/*nên truyền trong {} vì có thể truyền true, false, ... luôn, không có {} true false nó không hiểu*/}
+                </div>
+            </>    
         )
     }
 }

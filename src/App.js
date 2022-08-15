@@ -6,9 +6,9 @@ import MyComponent from './components/MyComponent';   //import MyComponent đã 
 import React from 'react';    //tương tự như MyComponent.js, import cái này để sử dụng component
 
 class App extends React.Component{  //khai báo App kiểu class component
-  render(){
+  render(){ //component bắt buộc ít nhất phải có render(), code trong return() gọi là TEMPLATE, component = template + logic
     return(
-      <div>
+      <div className='AppContainer'> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
         Hello World
         <MyComponent></MyComponent>   {/*gọi class MyComponent import vào dưới dạng thẻ*/}
       </div>

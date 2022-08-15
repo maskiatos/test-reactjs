@@ -42,7 +42,7 @@ class AddUserInfor extends React.Component{
     }
     render(){
         return(
-            <div>
+            <> {/*FRAGMENT, để có thể return nhiều hơn 1 ELEMENT HTML mà không cần render thêm 1 element <div> tổng nữa*/}
                 my first component, {this.state.name}, {this.state.age} years old 
                 <button onClick={(x) => this.handleClick(x)}>Click me (Arrow func)</button>   {/*nên dùng, trên chỉ cần handleClick(a){}*/}
                 <button onClick={this.handleClick1}>Click me (normal)</button>
@@ -56,7 +56,7 @@ class AddUserInfor extends React.Component{
                     <input type="text" onChange={(x) => this.handleOnChangeAge(x)} value={this.state.age}/> 
                     <button>Submit</button>
                 </form>
-            </div>
+            </>
         )
     }
 }
