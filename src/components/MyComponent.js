@@ -5,13 +5,6 @@ import AddUserInfor from "./AddUserInfor" //import componet UserInfor export ra 
 
 class MyComponent extends React.Component { //khai báo class MyComponent kế thừa Component từ thư viện React vừa import
     //JSX (JavaScript XML), chỉ riêng reactJS có cái này, là extension cho phép gõ html trực tiếp trong Reactjs
-    // constructor(props){ //viết đầy đủ khi không có Babel Compiler
-    //     super(props) //super(props) là để thằng con nhận được props từ cha truyền xuống
-    //     this.state = {
-    //         //ListUsers như bên dưới
-    //     }
-    // }
-    //do có Babel Compiler nên ở đây đều viết gọn như dưới, không có thì phải viết đủ ra như ở trên
     state = {
         ListUsers:[
             {id: 1, name: "Thinh", age: "29"}, //age ở đây là string thì sau khi thao tác logic phải thêm + đằng trước để chuyển về số
@@ -34,7 +27,7 @@ class MyComponent extends React.Component { //khai báo class MyComponent kế t
     })
     handleDeleteUser = (a) => {
         let ListUsersClone = this.state.ListUsers
-        ListUsersClone = ListUsersClone.filter(b => b.id !== a)
+        ListUsersClone = ListUsersClone.filter(b => b.id !== a) //filter ListUserClone chỉ còn cái có id khác cái input truyền vào
         this.setState({
             ListUsers: ListUsersClone
         })

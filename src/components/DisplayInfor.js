@@ -5,15 +5,33 @@ import "./DisplayInfor.scss"
 import logoImage from "../logo.svg"
 
 class DisplayInfor extends React.Component{
-    state={
-        showList: true
-    }
+    constructor(props){ //viết đầy đủ khi không có Babel Compiler
+        super(props) //super(props) là để thằng con nhận được props từ cha truyền xuống
+        console.log("constructor chay dau tien")
+        this.state={
+            showList: true
+        }
+    } //do có Babel Compiler nên ở đây đều viết gọn như dưới đây, không có thì phải viết đủ ra như ở trên, ở đây viết đủ làm ví dụ
+    // state={
+    //     showList: true
+    // }
     handleShowHide(a){
         this.setState({
             showList : !this.state.showList // ! để biểu thị giá trị ngược lại, đang true thành false, đang false thành true
         })
     }
+    componentDidMount(){ //built-in function, không cần gọi ra cũng tự chạy, chạy cuối sau constructor và render vì nó để gọi API
+        console.log("componentDidMount chay cuoi cung")
+        setTimeout(() => { //gọi API setTimeout
+            document.title = "TEST"
+        }, 2000);
+    }
+    componentDidUpdate(prevProps, prevState, snapshot){ //chỉ chạy khi thay đổi props, setState() hoặc forUpdate()
+        console.log("componentDidUpdate", this.props, prevProps) //this.props là props hiện tại sau thay đổi, prevProps là trước thay đổi   
+        this.props.list.length == 1? alert("Ban la nguoi cuoi cung") : null //xóa đến khi chỉ còn 1 người thì hiện thông báo
+    } //dùng để set điều kiện logic cho 1 cái sự kiện update diễn ra
     render(){
+        console.log("render chay thu hai")
         //destructuring để tối ưu code
         const {list} = this.props;  //list là truyền từ bên thằng cha MyComponent.js, dưới không phải this.props.list mà list là được
         return(
