@@ -15,12 +15,12 @@ class DisplayInfor extends React.Component{
     }
     render(){
         //destructuring để tối ưu code
-        const {list} = this.props;  //list là biến được truyền từ bên thằng cha MyComponent.js
+        const {list} = this.props;  //list là truyền từ bên thằng cha MyComponent.js, dưới không phải this.props.list mà list là được
         return(
             <div className="DisplayInforContainer"> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
                 <img src={logoImage}/> {/*logoImage là link đến ảnh được import ở trên, có thể là link đến file local hoặc link trên mạng */}
                 <div>
-                    <h3 onClick={(x) => this.handleShowHide(x)}>
+                    <h3 onClick={(a) => this.handleShowHide(a)}>
                         {this.state.showList === true ? "Hide all" : "Show all"}
                     </h3>
                 </div>
@@ -32,6 +32,7 @@ class DisplayInfor extends React.Component{
                                 <div key={x.id} className={+x.age<18 ? "under18" : "above18"}> {/*JSX cho phép dùng script trong html*/}
                                 {/*key UNIQUE để đánh dấu các thẻ html với nhau, tránh thao tác nhầm cái khi muốn sửa cái nào đó*/}
                                     My name is {x.name}, {x.age} years old <hr/>
+                                    <button onClick={() => this.props.deleteUser(x.id)}>Delete this</button>
                                 </div>
                             )
                             //CÁCH CŨ KHÔNG NÊN DÙNG KHI MUỐN GÁN className THEO ĐIỀU KIỆN (DÀI DÒNG, KHÔNG NÊN)

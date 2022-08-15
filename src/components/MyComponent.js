@@ -25,6 +25,13 @@ class MyComponent extends React.Component { //khai báo class MyComponent kế t
         })
         console.log(a)
     })
+    handleDeleteUser = (a) => {
+        let ListUsersClone = this.state.ListUsers
+        ListUsersClone = ListUsersClone.filter(b => b.id !== a)
+        this.setState({
+            ListUsers: ListUsersClone
+        })
+    }
     render(){ //component bắt buộc ít nhất phải có render(), code trong return() gọi là TEMPLATE, component = template + logic
         //JSX chỉ cho render() return 1 ELEMENT HTML thôi, ví dụ ở đây nếu return thêm 1 <div> nữa thì báo lỗi, nested <div> thì được
         return(     
@@ -36,7 +43,8 @@ class MyComponent extends React.Component { //khai báo class MyComponent kế t
                     <br/><br/>
                 </div>
                 <div className="b">
-                    <DisplayInfor list={this.state.ListUsers}/> {/*truyền từ file cha này vào file con, bên con .props để gọi*/}
+                    <DisplayInfor list={this.state.ListUsers} deleteUser={this.handleDeleteUser}/> 
+                    {/*truyền từ file cha này vào file con, bên con .props để gọi*/}
                     {/*nên truyền trong {} vì có thể truyền true, false, ... luôn, không có {} true false nó không hiểu*/}
                 </div>
             </>    
