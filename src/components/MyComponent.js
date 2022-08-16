@@ -3,7 +3,7 @@ import React, { useState } from "react" //import useState để sử dụng cái
 import DisplayInfor from "./DisplayInfor" //import componet DisplayInfor export ra từ DisplayInfo.js
 import AddUserInfor from "./AddUserInfor" //import componet UserInfor export ra từ UserInfo.js
 
-// //CÁCH 1: class component (CHỈ class component MỚI CÓ this, function component KHÔNG CÓ), DÙNG KHI stateful (KHI CÓ KHAI BÁO state)
+// CÁCH 1: class component (CHỈ class component MỚI CÓ this, function component KHÔNG CÓ), DÙNG KHI stateful (KHI CÓ KHAI BÁO state)
 // class MyComponent extends React.Component { //khai báo class MyComponent kế thừa Component từ thư viện React vừa import
 //     //JSX (JavaScript XML), chỉ riêng reactJS có cái này, là extension cho phép gõ html trực tiếp trong Reactjs
 //     //CHỈ KHI DÙNG class component MỚI CÓ this, function component KHÔNG CÓ this
@@ -56,7 +56,7 @@ import AddUserInfor from "./AddUserInfor" //import componet UserInfor export ra 
 /************************************************************************************************************************************* */
 //CÁCH 2: function component (KHÔNG CÓ this), DÙNG KHI stateless (KHI KHÔNG CẦN KHAI BÁO state)
 const MyComponent = (props) => { //function component KHÔNG CÓ render(), truyền props (built-in, phải y hệt) là nó hiểu là props bên cha
-    const [ListUsers, setListUsers] = useState( //tương tự như bên DisplayInfor.js, khai báo giá trị cho ListUsers:
+    const [ListUsers, setListUsers] = useState( //tương đương state ở class component trên, khai báo giá trị cho ListUsers:
         [
             {id: 1, name: "Thinh", age: "29"}, //age ở đây là string thì sau khi thao tác logic phải thêm + đằng trước để chuyển về số
             {id: 2, name: "Chris", age: "35"},
@@ -82,7 +82,7 @@ const MyComponent = (props) => { //function component KHÔNG CÓ render(), truy�
             </div>
             <div className="b">
                 <DisplayInfor list={ListUsers} deleteUser={handleDeleteUser}/> 
-                {/*truyền từ file cha này vào file con, bên con .props để gọi*/}
+                {/*truyền từ file cha này vào file con, bên con .props để gọi với class component, function component thì không cần*/}
                 {/*nên truyền trong {} vì có thể truyền true, false, ... luôn, không có {} true false nó không hiểu*/}
             </div>
         </>

@@ -78,14 +78,11 @@ import logoImage from "../logo.svg"
 /************************************************************************************************************************************* */
 //CÁCH 2: function component (KHÔNG CÓ this), DÙNG KHI stateless (KHI KHÔNG CẦN KHAI BÁO state)
 const DisplayInfor = (props) => { //function component KHÔNG CÓ render(), truyền props (built-in, phải y hệt) là nó hiểu là props bên cha
-    const {list} = props;  //list là truyền từ bên thằng cha MyComponent.js, dưới không phải props.list mà list là được
+    const {list} = props;  //list là truyền từ bên thằng cha MyComponent.js
     //function component LÀ stateless (KHÔNG CÓ setState()) NÊN PHẢI SỬ DỤNG BUILT-IN HOOK tên là useState() ĐỂ CẬP NHẬT GIÁ TRỊ state
     const [showList, setShowHide] = useState(true) //useState() tạo giá trị true cho showList và giá trị cập nhật setShowHide của nó
     //dùng const ở đây để kiểm soát sự thay đổi của showList, chỉ có thể thông qua useState() cập nhật setShowHide, không cho thay đổi tay
-    //code trên tương tự như sau nếu dùng class component, chỉ không có setShowHide do class component có setState() rồi:
-    // state({
-    //     showList: true,
-    // })
+    //code useState() trên tương đương state ở class component trên, chỉ không có setShowHide do class component có setState() rồi
     const handleShowHide = () => { //bỏ hết this với state
         setShowHide(!showList) //giá trị setShowHide luôn luôn là giá trị ngược lại của showList
     }
@@ -95,7 +92,7 @@ const DisplayInfor = (props) => { //function component KHÔNG CÓ render(), truy
             <div>
                 <p onClick={() => handleShowHide()}>{showList === true? "Hide all" : "Show all"}</p>
             </div>
-            {showList && //<div> true rồi nên nó hiện ra vì tổng thể kết quả là true, false thì không hiện
+            {showList && //<div> true rồi nếu showList true nữa thì nó hiện ra vì tổng thể kết quả là true, false thì không hiện
                 <div>
                     {list.map((x) => {      {/*map() tương tự foreach để lặp từng phần tử trong array*/}
                         //CÁCH NÊN DÙNG KHI MUỐN GÁN className THEO ĐIỀU KIỆN
