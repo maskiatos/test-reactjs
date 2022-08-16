@@ -1,5 +1,5 @@
 
-import React from "react"
+import React, { useState } from "react" //import useState khai báo cái useState ở function component
 import "./DisplayInfor.scss" 
 //import file này ở đây là để áp dụng riêng các code bên trong cho file này thôi, không phải khai báo thừa css global bên App.css như cũ 
 import logoImage from "../logo.svg"
@@ -79,10 +79,19 @@ import logoImage from "../logo.svg"
 //CÁCH 2: function component (KHÔNG CÓ this), DÙNG KHI stateless (KHI KHÔNG CẦN KHAI BÁO state)
 const DisplayInfor = (props) => { //function component KHÔNG CÓ render(), truyền props là nó hiểu là props bên cha
     const {list} = props;  //list là truyền từ bên thằng cha MyComponent.js, dưới không phải props.list mà list là được
+    //function component LÀ stateless (KHÔNG CÓ setState()) NÊN PHẢI SỬ DỤNG BUILT-IN HOOK tên là useState() ĐỂ CẬP NHẬT GIÁ TRỊ state
+    const [showList, setShowHide] = useState(true) //useState() tạo giá trị true cho showList và giá trị cập nhật setShowHide của nó
+    //dùng const ở đây để kiểm soát sự thay đổi của showList, chỉ có thể thông qua useState() cập nhật setShowHide, không cho thay đổi tay
+    const handleShowHide = () => {
+        setShowHide(!showList) //giá trị setShowHide luôn luôn là giá trị ngược lại của showList
+    }
     return(
         <div className="DisplayInforContainer"> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
             <img src={logoImage}/> {/*logoImage là link đến ảnh được import ở trên, có thể là link đến file local hoặc link trên mạng */}
-            {true && //<div> true rồi nên nó hiện ra vì tổng thể kết quả là true, false thì không hiện
+            <div>
+                <p onClick={() => handleShowHide()}>{showList === true? "Hide all" : "Show all"}</p>
+            </div>
+            {showList && //<div> true rồi nên nó hiện ra vì tổng thể kết quả là true, false thì không hiện
                 <div>
                     {list.map((x) => {      {/*map() tương tự foreach để lặp từng phần tử trong array*/}
                         //CÁCH NÊN DÙNG KHI MUỐN GÁN className THEO ĐIỀU KIỆN
