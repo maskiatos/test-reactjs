@@ -1,5 +1,5 @@
 
-import React, { useState } from "react" //import useState khai báo cái useState ở function component
+import React, { useState } from "react" //import useState để sử dụng cái built-in useState() ở function component
 import "./DisplayInfor.scss" 
 //import file này ở đây là để áp dụng riêng các code bên trong cho file này thôi, không phải khai báo thừa css global bên App.css như cũ 
 import logoImage from "../logo.svg"
@@ -77,12 +77,16 @@ import logoImage from "../logo.svg"
 // }
 /************************************************************************************************************************************* */
 //CÁCH 2: function component (KHÔNG CÓ this), DÙNG KHI stateless (KHI KHÔNG CẦN KHAI BÁO state)
-const DisplayInfor = (props) => { //function component KHÔNG CÓ render(), truyền props là nó hiểu là props bên cha
+const DisplayInfor = (props) => { //function component KHÔNG CÓ render(), truyền props (built-in, phải y hệt) là nó hiểu là props bên cha
     const {list} = props;  //list là truyền từ bên thằng cha MyComponent.js, dưới không phải props.list mà list là được
     //function component LÀ stateless (KHÔNG CÓ setState()) NÊN PHẢI SỬ DỤNG BUILT-IN HOOK tên là useState() ĐỂ CẬP NHẬT GIÁ TRỊ state
     const [showList, setShowHide] = useState(true) //useState() tạo giá trị true cho showList và giá trị cập nhật setShowHide của nó
     //dùng const ở đây để kiểm soát sự thay đổi của showList, chỉ có thể thông qua useState() cập nhật setShowHide, không cho thay đổi tay
-    const handleShowHide = () => {
+    //code trên tương tự như sau nếu dùng class component, chỉ không có setShowHide do class component có setState() rồi:
+    // state({
+    //     showList: true,
+    // })
+    const handleShowHide = () => { //bỏ hết this với state
         setShowHide(!showList) //giá trị setShowHide luôn luôn là giá trị ngược lại của showList
     }
     return(
