@@ -1,5 +1,6 @@
 //ĐÂY LÀ COMPONENT CON CỦA App.js VÀ ĐƯỢC GỌI RA BÊN ĐÓ BẰNG CÁCH EXPORT RA ĐỂ CHIA CODE RA CHO DỄ QUẢN LÝ
-import React, { useState } from "react" //import useState để sử dụng cái built-in useState() ở function component
+import React, { useState } from "react" 
+//import useState, useEffect, ... để sử dụng cái built-in useState(), useEffect(),... ở function component
 import DisplayInfor from "./DisplayInfor" //import componet DisplayInfor export ra từ DisplayInfo.js
 import AddUserInfor from "./AddUserInfor" //import componet UserInfor export ra từ UserInfo.js
 

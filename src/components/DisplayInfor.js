@@ -1,5 +1,6 @@
-
-import React, { useState } from "react" //import useState để sử dụng cái built-in useState() ở function component
+//ĐÂY LÀ COMPONENT CON CỦA MyComponent.js VÀ ĐƯỢC GỌI RA BÊN ĐÓ BẰNG CÁCH EXPORT RA ĐỂ CHIA CODE RA CHO DỄ QUẢN LÝ
+import React, { useState, useEffect } from "react" 
+//import useState, useEffect, ... để sử dụng cái built-in useState(), useEffect(),... ở function component
 import "./DisplayInfor.scss" 
 //import file này ở đây là để áp dụng riêng các code bên trong cho file này thôi, không phải khai báo thừa css global bên App.css như cũ 
 import logoImage from "../logo.svg"
@@ -26,11 +27,11 @@ import logoImage from "../logo.svg"
 //         setTimeout(() => { //gọi API setTimeout
 //             document.title = "TEST"
 //         }, 2000);
-//     }
+//     } //componentDidMount() CHỈ CÓ TRONG class component, GIỐNG NHƯ componentDidUpdate() Ở DƯỚI
 //     componentDidUpdate(prevProps, prevState, snapshot){ //chỉ chạy khi thay đổi props, setState() hoặc forUpdate()
 //         console.log("componentDidUpdate", this.props, prevProps) //this.props là props hiện tại sau thay đổi, prevProps là trước thay đổi   
 //         this.props.list.length == 1? alert("Ban la nguoi cuoi cung") : null //xóa đến khi chỉ còn 1 người thì hiện thông báo
-//     } //dùng để set điều kiện logic cho 1 cái sự kiện update diễn ra
+//     } //DÙNG ĐỂ SET ĐIỀU KIỆN LOGIC CHO 1 CÁI SỰ KIỆN SẼ DIỄN RA TẠI THỜI ĐIỂM NHẤT ĐỊNH, CHỈ CÓ TRONG class component
 //     render(){
 //         console.log("render chay thu hai")
 //         //destructuring để tối ưu code
@@ -86,6 +87,15 @@ const DisplayInfor = (props) => { //function component KHÔNG CÓ render(), truy
     const handleShowHide = () => { //bỏ hết this với state
         setShowHide(!showList) //giá trị setShowHide luôn luôn là giá trị ngược lại của showList
     }
+    //useEffect() CHỈ CÓ Ở function component, TƯƠNG ĐƯƠNG CẢ componentDidMount() VÀ componentDidUpdate() BÊN class component
+    useEffect(() => { //giống 2 cái kia bên class component, constructor chạy đầu tiên rồi đến render() cuối cùng là useEffect()
+        console.log("useEffect() này chỉ chạy 1 lần sau lần render() ngay trước nó")
+    },[]) //[] không có gì bên trong nghĩa là nó không theo dõi sự thay đổi của cái gì, nên sẽ chỉ chạy đúng 1 lần
+    useEffect(() => {
+        if(list.length == 0){
+            alert("You have deleted all the user list!")
+        }
+    },[list]) //[list] nghĩa là nó sẽ theo dõi sự thay đổi của list, bất kì lúc nào thỏa mãn sẽ chạy không giới hạn số lần
     return(
         <div className="DisplayInforContainer"> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
             <img src={logoImage}/> {/*logoImage là link đến ảnh được import ở trên, có thể là link đến file local hoặc link trên mạng */}

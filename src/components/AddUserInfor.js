@@ -1,5 +1,6 @@
 //ĐÂY LÀ COMPONENT CON CỦA MyComponent.js VÀ ĐƯỢC GỌI RA BÊN ĐÓ BẰNG CÁCH EXPORT RA ĐỂ CHIA CODE RA XỬ LÝ form
-import React, { useState } from "react"
+import React, { useState } from "react" 
+//import useState, useEffect, ... để sử dụng cái built-in useState(), useEffect(),... ở function component
 
 // CÁCH 1: class component (CHỈ class component MỚI CÓ this, function component KHÔNG CÓ), DÙNG KHI stateful (KHI CÓ KHAI BÁO state)
 // class AddUserInfor extends React.Component{
