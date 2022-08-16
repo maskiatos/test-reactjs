@@ -5,6 +5,7 @@ import AddUserInfor from "./AddUserInfor" //import componet UserInfor export ra 
 
 class MyComponent extends React.Component { //khai báo class MyComponent kế thừa Component từ thư viện React vừa import
     //JSX (JavaScript XML), chỉ riêng reactJS có cái này, là extension cho phép gõ html trực tiếp trong Reactjs
+    //CHỈ KHI DÙNG class component MỚI CÓ this, function component KHÔNG CÓ this
     state = {
         ListUsers:[
             {id: 1, name: "Thinh", age: "29"}, //age ở đây là string thì sau khi thao tác logic phải thêm + đằng trước để chuyển về số
@@ -32,7 +33,7 @@ class MyComponent extends React.Component { //khai báo class MyComponent kế t
             ListUsers: ListUsersClone
         })
     }
-    render(){ //component bắt buộc ít nhất phải có render(), code trong return() gọi là TEMPLATE, component = template + logic
+    render(){ //class component bắt buộc ít nhất phải có render(), code trong return() gọi là TEMPLATE, component = template + logic
         //JSX chỉ cho render() return 1 ELEMENT HTML thôi, ví dụ ở đây nếu return thêm 1 <div> nữa thì báo lỗi, nested <div> thì được
         return(     
         //nên viết theo cách button Click me ở dưới để không phải đổi handleClick(event) thành arrowfunction để chạy cái this.state.name
