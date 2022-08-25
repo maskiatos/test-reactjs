@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root')); //tạo Root cho phần tử có id "root" ở index.html
 root.render(  //sau đó nhúng tất cả code vào cái phần tử có id "root" đấy bên index.html rồi hiển thị ra

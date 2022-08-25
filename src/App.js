@@ -1,48 +1,14 @@
-import logo from './logo.svg';
+//bên git branch dev thì không có router với bootstrap thì nó phải import nhiều, bên này chỉ cần import App.scss
+//cài router, boostrap, react bootstrap bằng lệnh npm install --save-exact react-router-dom@6.3.0 bootstrap@5.2.0 react-bootstrap@2.4.0
 import './App.scss'; //không nên dùng css, nên dùng sass cài đặt bằng lệnh npm install --save-exact sass@1.53.0, sass có đuôi .scss
-import { useDispatch, useSelector } from 'react-redux';
-import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-import MyComponent from './components/MyComponent';   //import MyComponent đã được định nghĩa và export từ MyComponent.js 
-import React from 'react';    //tương tự như MyComponent.js, import cái này để sử dụng component
+import Header from './components/Header/Header';
 
-class App extends React.Component{  //khai báo App kiểu class component
-  render(){ //component bắt buộc ít nhất phải có render(), code trong return() gọi là TEMPLATE, component = template + logic
-    return(
-      <div className='AppContainer'> {/*nên đặt class cho thẻ html ở return để khai báo css dùng riêng cho nó ở .scss*/}
-        Hello World
-        <MyComponent></MyComponent>   {/*gọi class MyComponent import vào dưới dạng thẻ*/}
-      </div>
-    )
-  }
+const App = () => {
+  return (    
+    <div className="App">
+      <Header></Header>
+    </div>
+  );
 }
-// const App = () => {   //khai báo App kiểu function component
-//   const count = useSelector(state => state.counter.count);
-//   const dispatch = useDispatch();
-//   return (    
-//     <div>
-//       Hello World
-//       <MyComponent></MyComponent> 
-//     </div>
-//   );
-// }
-
-// const App = () => {
-//   const count = useSelector(state => state.counter.count);
-//   const dispatch = useDispatch();
-
-//   return (    
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Hello World
-//         </p>
-//         <div>Count = {count}</div>
-//         <button onClick={() => dispatch(increaseCounter())}>Increase</button>
-//         <button onClick={() => dispatch(decreaseCounter())}>Decrease</button>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
