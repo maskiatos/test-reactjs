@@ -6,5 +6,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+//Để ghi đề thuộc tính vào class boostrap, inspect element trang rồi chọn elements, tìm đến chỗ muốn đổi copy tên class vào đây rồi sửa, ví dụ:
+//Để đổi màu của Home, Users hay Admin khi chọn (active), copy ra tên class ở đây là .navbar-nav .nav-link.active vào đây như dưới: 
+// .app-container .header-container .navbar-nav .nav-link.active //{ .active phải liền .nav-link, không được cách do nó là đồng cấp
+//   color: red;
+// } 
+//cách trên là cách ghi của css, cách ghi của scss như sau:
+.app-container {
+  .header-container {
+    .navbar-nav {
+      .nav-link {
+        &.active { //& vì ở đây active và nav-link là đồng cấp, không có nó hiểu active là con nav-link, không chạy
+          color: blue;
+        }
+      }
+    }
+  }
+} 
 

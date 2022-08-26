@@ -8,14 +8,13 @@ const App = () => {
   return (    
     <div className="app-container">
       <div className='header-container'>
-        <Header/>
+        <Header/> {/*trong Header có các Route gồm các path, mỗi lần chọn cái path nào thì element tương ứng sẽ hiển thị trong Outlet ở dưới*/}
       </div>
       <div className='main-container'>
         <div className='sidenav-container'>
-          
         </div>
         <div className='app-content'>
-          <Outlet/> {/*Outlet này để xác định vùng gọi riêng tức là vùng hiển thị của thằng route con bên index.js, trên phải import */}
+          <Outlet/> {/*Outlet này để xác định vùng gọi riêng tức là vùng hiển thị của Route con bên index.js, trên phải import */}
         </div>
       </div>
     </div>
