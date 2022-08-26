@@ -2,13 +2,23 @@
 //cài router, boostrap, react bootstrap bằng lệnh npm install --save-exact react-router-dom@6.3.0 bootstrap@5.2.0 react-bootstrap@2.4.0
 import './App.scss'; //không nên dùng css, nên dùng sass cài đặt bằng lệnh npm install --save-exact sass@1.53.0, sass có đuôi .scss
 import Header from './components/Header/Header';
+import { Link, Outlet } from "react-router-dom"; 
 
 const App = () => {
   return (    
-    <div className="App">
-      <Header></Header>
+    <div className="app-container">
+      <div className='header-container'>
+        <Header/>
+      </div>
+      <div className='main-container'>
+        <div className='sidenav-container'>
+          
+        </div>
+        <div className='app-content'>
+          <Outlet/> {/*Outlet này để xác định vùng gọi riêng tức là vùng hiển thị của thằng route con bên index.js, trên phải import */}
+        </div>
+      </div>
     </div>
   );
 }
-
 export default App;
